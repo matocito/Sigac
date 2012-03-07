@@ -8,7 +8,7 @@ group :development, :test do
   gem 'spork'
   gem 'guard-rspec'
   gem 'libnotify'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', :require => :false
 end
 
 gem 'pg'
