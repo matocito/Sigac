@@ -1,5 +1,12 @@
 require 'spec_helper'
 
 describe Turma do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before do
+    @turma = Factory.create(:turma)
+  end
+  
+  subject { @turma }
+  
+  it { should respond_to(:sala) }
+  it { should respond_to(:nome) }
 end

@@ -1,3 +1,0 @@
-Factory.define do
-  
-end
