@@ -7,6 +7,10 @@ describe Turma do
   
   subject { @turma }
   
-  it { should respond_to(:sala) }
-  it { should respond_to(:nome) }
+  it { should validate_presence_of :sala }
+  
+  it { should belong_to :serie }
+  it { should have_many :disciplinas }
+  it { should belong_to :ano }
+  it { should have_many :alunos }
 end

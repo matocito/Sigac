@@ -9,6 +9,8 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'libnotify'
   gem 'factory_girl_rails', :require => false
+  gem 'shoulda-matchers'
 end
 
 gem 'pg'
+gem 'brcpfcnpj'
