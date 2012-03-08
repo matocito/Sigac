@@ -8,6 +8,11 @@ group :development, :test do
   gem 'spork'
   gem 'guard-rspec'
   gem 'libnotify'
+  gem 'factory_girl_rails', :require => false
+  gem 'shoulda-matchers'
 end
 
 gem 'pg'
+gem 'brcpfcnpj'
+gem 'devise'
+gem 'carrierwave'
