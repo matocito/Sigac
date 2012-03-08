@@ -10,6 +10,9 @@ group :development, :test do
   gem 'libnotify'
   gem 'factory_girl_rails', :require => false
   gem 'shoulda-matchers'
+  gem 'cucumber-rails'
+  gem 'guard-cucumber'
+  gem 'database_cleaner'
 end
 
 gem 'pg'
