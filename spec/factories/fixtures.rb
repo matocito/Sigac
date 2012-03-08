@@ -28,6 +28,20 @@ FactoryGirl.define do
     association :aluno
   end
 
+  factory :usuario do
+    sequence(:email) { |n| "usuario-#{n}@example.com" }
+    password '123456'
+    password_confirmation { |u| u.password }
+    
+    factory :usuario_aluno do
+      association :autenticavel, :factory => :aluno
+    end
+    
+    factory :usuario_professor do
+      association :autenticavel, :factory => :professor
+    end
+  end
+
   factory :aluno do
     nome 'Aluno'
     identidade '12345'
