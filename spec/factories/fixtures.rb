@@ -34,7 +34,7 @@ FactoryGirl.define do
   end
 
   factory :boletim do
-    media 8.5
+    media 80
     frequencia 89
     disciplina 'Biologia'
     bimestre 2
@@ -88,7 +88,7 @@ FactoryGirl.define do
     titulo '1 ano'
     
     after_create do |serie, evaluator|
-      FactoryGirl.create_list(:materia, 7, :serie => serie)
+      #FactoryGirl.create_list(:materia, 7, :serie => serie)
     end
   end
   
@@ -112,7 +112,7 @@ FactoryGirl.define do
   end
   
   factory :disciplina do
-    association :turma
+    association :turma, :factory => :turma_with_associations
     association :materia
   end
   

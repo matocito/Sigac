@@ -8,4 +8,5 @@ class Aluno < ActiveRecord::Base
   has_many   :boletins
   has_many   :resultados
   has_one    :usuario, :as => :autenticavel
+  has_many   :avaliacoes, :through => :resultados
 end
