@@ -14,3 +14,4 @@ end
 
 gem 'pg'
 gem 'brcpfcnpj'
+gem 'carrierwave'
