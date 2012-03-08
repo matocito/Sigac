@@ -18,11 +18,25 @@ FactoryGirl.define do
     end
   end
 
+  factory :boletim do
+    media 8.5
+    frequencia 89
+    disciplina 'Biologia'
+    bimestre 2
+    ano 2011
+    serie '2 Ano'
+    association :aluno
+  end
+
   factory :aluno do
     nome 'Aluno'
     identidade '12345'
     nascimento 16.years.ago
-    telefone '99998888' 
+    telefone '99998888'
+    
+    after_create do |aluno, evaluator|
+      FactoryGirl.create_list(:boletim, 8, :aluno => aluno)
+    end
   end
   
   factory :serie do
