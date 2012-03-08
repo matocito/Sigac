@@ -14,4 +14,5 @@ end
 
 gem 'pg'
 gem 'brcpfcnpj'
+gem 'devise'
 gem 'carrierwave'
