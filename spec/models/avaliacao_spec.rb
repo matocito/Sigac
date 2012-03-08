@@ -12,4 +12,5 @@ describe Avaliacao do
   it { should_not allow_value(0).for :peso }
   
   it { should belong_to :disciplina_professor }
+  it { should have_many :resultados }
 end

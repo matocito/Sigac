@@ -5,4 +5,5 @@ class Turma < ActiveRecord::Base
   belongs_to  :ano
   has_many    :disciplinas
   has_many    :alunos
+  has_many    :horarios
 end

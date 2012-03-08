@@ -4,4 +4,5 @@ class Avaliacao < ActiveRecord::Base
     { :only_integer => true, :greater_than => 0 }
 
   belongs_to :disciplina_professor
+  has_many   :resultados
 end

@@ -13,4 +13,5 @@ describe Turma do
   it { should have_many :disciplinas }
   it { should belong_to :ano }
   it { should have_many :alunos }
+  it { should have_many :horarios }
 end

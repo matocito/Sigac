@@ -7,6 +7,7 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.plural 'material', 'materiais'
   inflect.plural 'ano_letivo', 'anos_letivos'
   inflect.plural 'boletim', 'boletins'
+  inflect.irregular 'administrador', 'administradores'
   inflect.irregular 'boletim', 'boletins'
   inflect.irregular 'professor', 'professores'
   inflect.irregular 'avaliacao', 'avaliacoes'

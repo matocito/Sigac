@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120308010556) do
+ActiveRecord::Schema.define(:version => 20120308020354) do
+
+  create_table "administradores", :force => true do |t|
+    t.string   "nome"
+    t.string   "cpf"
+    t.string   "nascimento"
+    t.string   "telefone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "alunos", :force => true do |t|
     t.string   "nome"
@@ -69,6 +78,21 @@ ActiveRecord::Schema.define(:version => 20120308010556) do
     t.datetime "updated_at"
   end
 
+  create_table "horarios", :force => true do |t|
+    t.integer  "turma_id"
+    t.integer  "disciplina_professor_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "horas", :force => true do |t|
+    t.integer  "horario_id"
+    t.string   "dia"
+    t.string   "intervalo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "materiais_estudo", :force => true do |t|
     t.string   "titulo"
     t.integer  "disciplina_professor_id"
@@ -92,6 +116,14 @@ ActiveRecord::Schema.define(:version => 20120308010556) do
     t.string   "cpf"
     t.date     "nascimento"
     t.string   "telefone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "resultados", :force => true do |t|
+    t.float    "nota"
+    t.integer  "avaliacao_id"
+    t.integer  "aluno_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

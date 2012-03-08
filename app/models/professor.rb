@@ -7,5 +7,6 @@ class Professor < ActiveRecord::Base
   has_many :disciplina_professores
   has_many :materiais_estudo, :through => :disciplina_professores
   has_many :avaliacoes, :through => :disciplina_professores
+  has_one  :usuario, :as => :autenticavel
   
 end

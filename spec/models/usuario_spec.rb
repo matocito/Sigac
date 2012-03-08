@@ -19,5 +19,14 @@ describe Usuario do
     it { @usuario_professor.autenticavel_type.should == Professor.to_s }
   end
   
+  describe "when usuario is an administrador" do
+    before do 
+      @usuario_administrador = FactoryGirl.create(:usuario_administrador)
+    end
+    it { 
+      @usuario_administrador.autenticavel_type.should == Administrador.to_s }
+  end
+  
+  
   it { should belong_to :autenticavel }
 end

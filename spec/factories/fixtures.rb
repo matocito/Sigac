@@ -11,11 +11,26 @@ FactoryGirl.define do
   factory :turma do
     sala 'A'
     nome 'Nome Turma'
-    association :serie
     
-    after_create do |turma, evaluator|
-      FactoryGirl.create_list(:disciplina, 6, :turma => turma)
+    factory :turma_with_associations do
+      association :serie
+    
+      after_create do |turma, evaluator|
+        FactoryGirl.create_list(:disciplina, 6, :turma => turma)
+        FactoryGirl.create_list(:aluno, 6, :turma => turma)
+      end
     end
+  end
+
+  factory :horario do
+    association :turma
+    association :disciplina_professor
+  end
+ 
+  factory :hora do
+    dia 'Segunda-Feira'
+    intervalo '13:00 - 13:30'
+    association :horario
   end
 
   factory :boletim do
@@ -40,6 +55,17 @@ FactoryGirl.define do
     factory :usuario_professor do
       association :autenticavel, :factory => :professor
     end
+    
+    factory :usuario_administrador do
+      association :autenticavel, :factory => :administrador
+    end
+  end
+
+  factory :administrador do
+    nome 'Administrador'
+    cpf '07805186405'
+    nascimento 40.years.ago
+    telefone '88887777'
   end
 
   factory :aluno do
@@ -48,8 +74,13 @@ FactoryGirl.define do
     nascimento 16.years.ago
     telefone '99998888'
     
-    after_create do |aluno, evaluator|
-      FactoryGirl.create_list(:boletim, 8, :aluno => aluno)
+    factory :aluno_with_associations do
+      association :turma
+    
+      after_create do |aluno, evaluator|
+        FactoryGirl.create_list(:boletim, 8, :aluno => aluno)
+       FactoryGirl.create_list(:resultado, 6, :aluno => aluno)
+      end
     end
   end
   
@@ -68,6 +99,14 @@ FactoryGirl.define do
     telefone '8432228888'
   end
   
+  factory :resultado do
+    nota 8
+    factory :resultado_with_associations do
+      association :avaliacao
+      association :aluno
+    end
+  end
+  
   factory :disciplina do
     association :turma
     association :materia
@@ -76,19 +115,30 @@ FactoryGirl.define do
   factory :disciplina_professor do
     aulas_lecionadas 10
     bimestre 1
-    
-    association :disciplina
-    association :professor
-    
-    after_create do |disciplina, evaluator|
-      FactoryGirl.create_list(:material_estudo,
-         6, :disciplina_professor => disciplina)
+    factory :disciplina_professor_with_associations do
+      association :disciplina
+      association :professor
+      
+      after_create do |disciplina, evaluator|
+        FactoryGirl.create_list(:material_estudo,
+           6, :disciplina_professor => disciplina)
+        FactoryGirl.create_list(:avaliacao,
+           6, :disciplina_professor => disciplina)
+      end
     end
   end
   
   factory :avaliacao do
     titulo 'Teste'
     peso 2
+    
+    factory :avaliacao_with_associations do
+      association :disciplina_professor
+      
+      after_create do |avaliacao, evaluator|
+        FactoryGirl.create_list(:resultado, 6, :avaliacao => avaliacao)
+      end
+    end
   end
   
   factory :material_estudo do

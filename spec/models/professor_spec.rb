@@ -15,5 +15,6 @@ describe Professor do
   it { should have_many :disciplina_professores }
   it { should have_many(:materiais_estudo).through :disciplina_professores }
   it { should have_many(:avaliacoes).through :disciplina_professores }
+  it { should have_one :usuario }
 
 end

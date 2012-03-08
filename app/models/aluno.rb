@@ -5,5 +5,7 @@ class Aluno < ActiveRecord::Base
   validates :telefone, :presence => true
   
   belongs_to :turma
-  has_many :boletins
+  has_many   :boletins
+  has_many   :resultados
+  has_one    :usuario, :as => :autenticavel
 end
