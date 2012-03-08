@@ -86,6 +86,10 @@ FactoryGirl.define do
   
   factory :serie do
     titulo '1 ano'
+    
+    after_create do |serie, evaluator|
+      FactoryGirl.create_list(:materia, 7, :serie => serie)
+    end
   end
   
   factory :materia do
