@@ -9,6 +9,10 @@ class Disciplina < ActiveRecord::Base
   has_many   :professores, :through => :disciplina_professores
   has_many   :avaliacoes, :through => :disciplina_professores
   
+  def adicionar_professor(professor)
+    disciplina_professores.create(:professor => professor)
+  end
+  
   def gerar_boletim(aluno)
     
     raise "error" if aluno.resultados.empty?
@@ -22,6 +26,10 @@ class Disciplina < ActiveRecord::Base
       :disciplina => 'Biologia', :bimestre => 2, :ano => 2011,
       :serie => '2 Ano', :aluno => aluno
     boletim
+  end
+  
+  def to_s
+    materia.nome
   end
   
 end

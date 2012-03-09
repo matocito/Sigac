@@ -6,4 +6,13 @@ class Turma < ActiveRecord::Base
   has_many    :disciplinas
   has_many    :alunos
   has_many    :horarios
+  
+  after_create :criar_disciplinas
+  
+  protected
+  def criar_disciplinas
+    serie.materias.each do |materia|
+      disciplinas.create(:turma => self, :materia => materia)
+    end
+  end
 end

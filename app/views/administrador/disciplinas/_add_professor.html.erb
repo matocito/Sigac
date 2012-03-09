@@ -1,0 +1,14 @@
+<%= simple_form_for [:administrador, @disciplina, @disciplina_professor] do |f| %>
+  <%= f.input :disciplina, :disabled => true %>
+ 
+  <input type="hidden" id="disciplina_professor_professor_id" 
+    name="disciplina_professor[professor_id]" />
+<% end -%>
+
+<h3>Professor</h3>
+
+<%= form_for [:administrador, Professor.new], :remote => true do |f| %>
+  <%= f.autocomplete_field :nome,
+   autocomplete_professor_nome_administrador_professores_path, 
+  :id_element => '#disciplina_professor_professor_id' %>
+<% end -%>
