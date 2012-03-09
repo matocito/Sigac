@@ -1,0 +1,10 @@
+<%= simple_form_for @serie, :url => { :controller => 'administrador/series' },
+  :html => { :class => 'form-horizontal' } do |f|  %>
+  <%= f.input :titulo %>
+  <%= f.association :materias, :as => :check_boxes %>
+  
+  <div class="form-actions">
+    <%= f.button :submit,  :class => 'btn-primary' %>
+    <%= link_to 'Cancelar', administrador_series_index_path  %>
+  </div>
+<% end %>

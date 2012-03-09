@@ -6,6 +6,7 @@ Sigac::Application.routes.draw do
   namespace :administrador do
     resources :materias
     resources :alunos
+    resources :series
     
     root :to => 'alunos#index'
   end

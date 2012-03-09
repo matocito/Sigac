@@ -4,4 +4,8 @@ class Materia < ActiveRecord::Base
 
   has_and_belongs_to_many :series, :class_name => 'Serie'
   has_many :disciplinas
+  
+  def to_s
+    nome
+  end
 end
