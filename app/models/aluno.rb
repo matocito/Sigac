@@ -9,4 +9,11 @@ class Aluno < ActiveRecord::Base
   has_many   :resultados
   has_one    :usuario, :as => :autenticavel
   has_many   :avaliacoes, :through => :resultados
+  
+  accepts_nested_attributes_for :usuario
+  
+  def responsavel
+    atr = read_attribute(:responsavel)
+    atr.blank? ? read_attribute(:nome) : atr
+  end
 end

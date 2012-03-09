@@ -1,0 +1,57 @@
+<div class="page-header">
+  <h2>Aluno - <%= link_to 'Editar Aluno', 
+    edit_administrador_aluno_path, :class => 'btn' %></h2>
+</div>
+
+<div class="tabbable">
+  <ul class="nav nav-tabs" id="asd">
+    <li class="active"><a href="#dados-pessoais" data-toggle="tab">Dados Pessoais</a></li>
+    <li><a href="#dados-usuario" data-toggle="tab">Dados de Usuário</a></li>
+    <li><a href="#dados-turma" data-toggle="tab">Turma</a></li>
+    
+  </ul>
+  
+  <div class="tab-content">
+    <div class="tab-pane active" id="dados-pessoais">
+      <table class="table table-striped">
+        <tr>
+          <td>Nome:</td>
+          <td><h4><%= @aluno.nome %></h4></td>
+        </tr>
+        <tr>
+          <td>Responsável:</td>
+          <td><h4><%= @aluno.responsavel %></h4></td>
+        </tr>
+        <tr>
+          <td>Identidade:</td>
+          <td><h4><%= @aluno.identidade %></h4></td>
+        </tr>
+        <tr>
+          <td>Nascimento:</td>
+          <td><h4><%=l @aluno.nascimento %></h4></td>
+        </tr>
+        <tr>
+          <td>Telefone:</td>
+          <td><h4><%= @aluno.telefone %></h4></td>
+        </tr>
+      </table>
+    </div>
+    <div class="tab-pane" id="dados-usuario">
+      <table class="table table-striped">
+        <tr>
+          <td>E-mail:</td>
+          <td><h4><%= @aluno.usuario.email %></h4></td>
+        </tr>
+        <tr>
+          <td>Senha:</td>
+          <td><h4>******</h4></td>
+        </tr>
+      </table>
+    </div>
+    
+    <div class="tab-pane" id="dados-turma">
+      <h3><%= @aluno.turma ? aluno.turma.nome : 'Aluno não matriculado' %></h3>
+    </div>
+  </div>
+</div>
+

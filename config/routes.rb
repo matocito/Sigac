@@ -3,6 +3,7 @@ Sigac::Application.routes.draw do
 
   namespace :administrador do
     resources :materias
+    resources :alunos
   end
 
   # The priority is based upon order of creation:
