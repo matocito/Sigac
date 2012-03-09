@@ -1,0 +1,28 @@
+<div class="page-header">
+  <h2>Matérias - <%= link_to 'Adicionar Matéria', 
+    new_administrador_materia_path, :class => 'btn' %></h2>
+</div>
+
+<table class="table table-striped table-bordered" id="sortTable">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nome</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @materias.each do |materia| -%>
+      <tr>
+        <td><%= materia.id %></td>
+        <td><%= materia.nome %></td>
+        <td>
+          <%= link_to 'Editar', edit_administrador_materia_path(materia),
+            :class => 'btn btn-mini' %>
+          <%= link_to 'Deletar', administrador_materia_path(materia), :method => :delete,
+            :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>

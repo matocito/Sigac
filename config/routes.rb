@@ -1,6 +1,10 @@
 Sigac::Application.routes.draw do
   devise_for :usuarios
 
+  namespace :administrador do
+    resources :materias
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
