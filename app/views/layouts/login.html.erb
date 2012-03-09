@@ -34,6 +34,16 @@
 		</header>
 
 		<div class="container">
+		
+		  <% if flash[:alert] %>
+		    <div class="row-fluid">
+		      <br />
+		      <div class="alert alert-error">
+            <%= flash[:alert] %>
+          </div>  
+		    </div>
+		  <% end %>
+
 			<div class="row-fluid">
 				<div class="span6">
 					<div id="apresentacao">
