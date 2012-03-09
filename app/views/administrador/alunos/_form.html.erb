@@ -1,0 +1,27 @@
+<%= simple_form_for [:administrador, @aluno], 
+  :html => { :class => 'form-horizontal' } do |f|  %>
+  <fieldset>
+    <legend>Dados Pessoais</legend>
+    <%= f.input :nome %>
+    <%= f.input :responsavel, 
+    :hint => 'Vazio caso o próprio aluno seja o seu responsável' %>
+    <%= f.input :identidade %>
+    <%= f.input :nascimento, :as => :string %>
+    <%= f.input :telefone %>
+  </fieldset>
+  
+  <fieldset>
+    <legend>Dados de Usuário
+      <%= link_to ' - Alterar Senha', '#' unless @aluno.new_record? %></legend>
+
+      <%= f.input :email, :label => 'E-mail' %>
+      <%= f.input :password, :label => 'Senha' if @aluno.new_record? %>
+      <%= f.input :password_confirmation, 
+        :label => 'Confirmar Senha' if @aluno.new_record? %>
+  </fieldset>
+  
+  <div class="form-actions">
+    <%= f.button :submit,  :class => 'btn-primary' %>
+    <%= link_to 'Cancelar', administrador_alunos_path  %>
+  </div>
+<% end %>

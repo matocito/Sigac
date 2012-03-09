@@ -1,4 +1,8 @@
 class Professor < ActiveRecord::Base
+
+  devise :database_authenticatable, :recoverable, 
+    :rememberable, :trackable, :validatable
+
   validates :nome, :presence => true
   validates :cpf, :uniqueness => true, :cpf => true
   validates :nascimento, :presence => true
@@ -9,4 +13,6 @@ class Professor < ActiveRecord::Base
   has_many :avaliacoes, :through => :disciplina_professores
   has_one  :usuario, :as => :autenticavel
   
+  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :nome, :cpf, :nascimento, :telefone, :foto
 end

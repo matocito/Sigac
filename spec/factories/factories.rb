@@ -43,29 +43,15 @@ FactoryGirl.define do
     association :aluno
   end
 
-  factory :usuario do
-    sequence(:email) { |n| "usuario-#{n}@example.com" }
-    password '123456'
-    password_confirmation { |u| u.password }
-    
-    factory :usuario_aluno do
-      association :autenticavel, :factory => :aluno
-    end
-    
-    factory :usuario_professor do
-      association :autenticavel, :factory => :professor
-    end
-    
-    factory :usuario_administrador do
-      association :autenticavel, :factory => :administrador
-    end
-  end
-
   factory :administrador do
     nome 'Administrador'
     cpf '07805186405'
     nascimento 40.years.ago
     telefone '88887777'
+    
+    sequence(:email) { |n| "admin-#{n}@example.com" }
+    password '123456'
+    password_confirmation { |u| u.password }
   end
 
   factory :aluno do
@@ -73,6 +59,10 @@ FactoryGirl.define do
     identidade '12345'
     nascimento 16.years.ago
     telefone '99998888'
+    
+    sequence(:email) { |n| "aluno-#{n}@example.com" }
+    password '123456'
+    password_confirmation { |u| u.password }
     
     factory :aluno_with_associations do
       association :turma
@@ -101,6 +91,10 @@ FactoryGirl.define do
     cpf  '07805186405'
     nascimento 21.years.ago
     telefone '8432228888'
+    
+    sequence(:email) { |n| "professor-#{n}@example.com" }
+    password '123456'
+    password_confirmation { |u| u.password }
   end
   
   factory :resultado do

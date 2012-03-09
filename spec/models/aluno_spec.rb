@@ -14,7 +14,6 @@ describe Aluno do
   
   it { should belong_to :turma }
   it { should have_many :boletins }
-  it { should have_one :usuario }
   it { should have_many :resultados }
   
   describe "whan in a turma" do
@@ -23,5 +22,13 @@ describe Aluno do
     end
     
     it { @aluno_turma.turma.should_not be_nil }
+  end
+  
+  describe "when responsavel not present" do
+    before do
+      @aluno.responsavel = ''
+    end
+    
+    it { @aluno.responsavel.should == @aluno.nome }
   end
 end

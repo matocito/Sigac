@@ -11,6 +11,4 @@ describe Administrador do
   it { should_not allow_value('1111111111').for :cpf }
   it { should validate_presence_of :nascimento }
   it { should validate_presence_of :telefone }
-  
-  it { should have_one :usuario }
 end
