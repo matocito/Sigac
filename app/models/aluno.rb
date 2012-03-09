@@ -1,4 +1,8 @@
 class Aluno < ActiveRecord::Base
+
+  devise :database_authenticatable, :recoverable, 
+    :rememberable, :trackable, :validatable
+
   validates :nome, :presence => true
   validates :identidade, :presence => true
   validates :nascimento, :presence => true
@@ -11,6 +15,9 @@ class Aluno < ActiveRecord::Base
   has_many   :avaliacoes, :through => :resultados
   
   accepts_nested_attributes_for :usuario
+  
+  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :nome, :identidade, :nascimento, :telefone, :responsavel, :foto
   
   def responsavel
     atr = read_attribute(:responsavel)

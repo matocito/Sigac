@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>BEM VINDO AO SIGACOL - CEMNA</title>
+	  <%= stylesheet_link_tag 'bootstrap.min', 'login', 
+	    'bootstrap-responsive.min' %>
+    <%= javascript_include_tag 'jquery', 'jquery_ujs', 'application' %>
+    <%= javascript_include_tag 'bootstrap/bootstrap.min' %>
+    <%= csrf_meta_tag %>
+		
+		<script >
+      
+      $(function () {
+        $("a[rel=popover]").popover({
+            placement: 'bottom'
+        });
+      })
+          
+    </script>
+	</head>
+
+	<body>
+
+		<!-- Cabeçalho -->
+		<header class="jumbotron masthead" id="overview">
+		  <div class="inner">
+			<div class="container">
+			  <h1>Bem Vindo ao Sigac!</h1>
+			  <p class="lead">
+				Sistema de Integração e Gestão de Atividades Colegiais
+			  </p>
+			</div>
+		  </div>
+		</header>
+
+		<div class="container">
+			<div class="row-fluid">
+				<div class="span6">
+					<div id="apresentacao">
+				    <ul class="nav nav-tabs">
+					      <li class="active apresentacaoLogin"><a href="#funcoesProfessor" 
+					        data-toggle="tab">
+					          <%= image_tag 'education_icons/png/72/teacher.png' %></a></li>  
+                </li>
+					      <li class="apresentacaoLogin"><a href="#funcoesAluno" 
+					        data-toggle="tab">
+					          <%= image_tag 'education_icons/png/72/graduated.png' %></a></li>  
+                </li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="funcoesProfessor">
+                <ul class="media-grid-login">
+                  <li>
+                    <a href="#" rel="popover" title="Diário de Classe" data-content="O professor poderá cadastrar avaliações e atribuir notas e faltas a alunos em determinada disciplina!">
+                      <%= image_tag 'education_icons/png/32/anotation.png', 
+                        :class => 'thumbnail' %> 
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" rel="popover" title="Upload" data-content="O professor poderá fazer o upload de material para estudo referente a determinada disciplina!">
+                       <%= image_tag 'education_icons/png/32/upload1.png', 
+                        :class => 'thumbnail' %> 
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" rel="popover" title="Horário Individual" data-content="O professor poderá visualizar os horários em que irá lecionar em cada turma!">
+                       <%= image_tag 'education_icons/png/32/schedule.png', 
+                        :class => 'thumbnail' %> 
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" rel="popover" title="Calendário Escolar" data-content="O professor poderá visualizar o calendário escolar com os seus respectivos eventos!">
+                       <%= image_tag 'education_icons/png/32/calendar.png', 
+                        :class => 'thumbnail' %> 
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div  class="tab-pane" id="funcoesAluno">
+                <ul class="media-grid-login">
+                  <li>
+                    <a href="#" rel="popover" title="Diário de Classe" data-content="O aluno poderá visualizar suas notas, frequências e quantidade de aulas ministradas em cada disciplina!">
+                       <%= image_tag 'education_icons/png/32/anotation.png', 
+                        :class => 'thumbnail' %> 
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" rel="popover" title="Boletim Escolar" data-content="O aluno poderá visualizar suas médias e frequências bimestrais em cada disciplina!">
+                       <%= image_tag 'education_icons/png/32/boletim.png', 
+                        :class => 'thumbnail' %> 
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" rel="popover" title="Histórico Escolar" data-content="O aluno poderá visualizar seus boletins de todos os anos letivos!">
+                       <%= image_tag 'education_icons/png/32/historico.png', 
+                        :class => 'thumbnail' %> 
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" rel="popover" title="Download" data-content="O aluno poderá fazer o download de material de estudo referente a determinada disciplina!">
+                       <%= image_tag 'education_icons/png/32/download1.png', 
+                        :class => 'thumbnail' %> 
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" rel="popover" title="Horário Individual" data-content="O aluno poderá visualizar o seu horário de aula!">
+                       <%= image_tag 'education_icons/png/32/schedule.png', 
+                        :class => 'thumbnail' %> 
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" rel="popover" title="Calendário Escolar" data-content="O aluno poderá visualizar o calendário escolar com os seus respectivos eventos!">
+                       <%= image_tag 'education_icons/png/32/calendar.png', 
+                        :class => 'thumbnail' %> 
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+					</div>
+				</div>
+				<div class="span6">
+					<div class="login">
+						<%= yield %>
+					</div>
+				</div>
+			</div>
+
+			<footer>
+				<p>SIGAC - Sistema de Integração e Gestão de Atividades Colegiais</p>
+			</footer>
+
+		</div>
+
+	</body>
+</html>
+

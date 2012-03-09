@@ -14,7 +14,6 @@ describe Aluno do
   
   it { should belong_to :turma }
   it { should have_many :boletins }
-  it { should have_one :usuario }
   it { should have_many :resultados }
   
   describe "whan in a turma" do
