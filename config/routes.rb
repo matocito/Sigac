@@ -10,5 +10,5 @@ Sigac::Application.routes.draw do
     root :to => 'alunos#index'
   end
   
-  #root :to => 'administrador/alunos#index'
+  root :to => 'administrador/alunos#index'
 end

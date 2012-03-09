@@ -8,8 +8,6 @@ class ApplicationController < ActionController::Base
   def layout_by_resource
     if devise_controller?
       "login"
-    else
-      resource_name.to_s
     end
   end
 end
