@@ -1,4 +1,4 @@
-class Administrador::MateriasController < ApplicationController
+class Administrador::MateriasController < Administrador::AdminController
   inherit_resources
   
   actions :all, :except => [:show]

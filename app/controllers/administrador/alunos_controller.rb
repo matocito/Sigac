@@ -1,4 +1,4 @@
-class Administrador::AlunosController < ApplicationController
+class Administrador::AlunosController < Administrador::AdminController
   inherit_resources
   
   def new
