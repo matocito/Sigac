@@ -21,6 +21,15 @@ class Professor < ActiveRecord::Base
     nome
   end
   
+  def self.disponiveis_para_disciplina(disciplina)
+    ids = Disciplina.find(disciplina).professores.map(&:id)
+    if ids.empty?
+      all
+    else
+      where('id not in (?)', ids)
+    end
+  end
+  
   def as_json(options={})
     { :id => id, :nome => nome }
   end

@@ -12,6 +12,8 @@ class DisciplinaProfessor < ActiveRecord::Base
   has_many :materiais_estudo, :class_name => 'MaterialEstudo'
   has_many :avaliacoes
   
+  validates :professor_id, :presence => true
+  
   default_value_for :aulas_lecionadas, 0
   default_value_for :bimestre do
     1

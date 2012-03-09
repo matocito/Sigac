@@ -8,9 +8,7 @@ Sigac::Application.routes.draw do
     resources :alunos
     resources :series
     resources :turmas
-    resources :professores do
-      get :autocomplete_professor_nome, :on => :collection
-    end
+    resources :professores
     resources :disciplinas do
       resources :disciplina_professores
       get 'add_professor', :on => :member
