@@ -14,8 +14,6 @@ class Aluno < ActiveRecord::Base
   has_one    :usuario, :as => :autenticavel
   has_many   :avaliacoes, :through => :resultados
   
-  accepts_nested_attributes_for :usuario
-  
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :nome, :identidade, :nascimento, :telefone, :responsavel, :foto
   
