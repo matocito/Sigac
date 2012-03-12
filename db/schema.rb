@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(:version => 20120308020354) do
   create_table "horarios", :force => true do |t|
     t.integer  "turma_id"
     t.integer  "disciplina_professor_id"
+    t.integer  "hora_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

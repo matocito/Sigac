@@ -1,0 +1,2 @@
+module Administrador::TurmasHelper
+end

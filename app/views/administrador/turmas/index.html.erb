@@ -1,0 +1,34 @@
+<div class="page-header">
+  <h2>Turmas - <%= link_to 'Adicionar Turma', 
+    new_administrador_turma_path, :class => 'btn' %></h2>
+</div>
+
+<table class="table table-striped table-bordered" id="sortTable">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nome</th>
+      <th>Série</th>
+      <th>Sala</th>
+      <th>Definir Horário</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @turmas.each do |turma| -%>
+      <tr>
+        <td><%= turma.id %></td>
+        <td><%= link_to turma.nome, [:administrador, turma] %></td>
+        <td><%= turma.serie %></td>
+        <td><%= turma.sala %></td>
+        <td><%= link_to 'Definir Horário', horario_administrador_turma_path(turma) %></td>
+        <td>
+          <%= link_to 'Editar', edit_administrador_turma_path(turma),
+            :class => 'btn btn-mini' %>
+          <%= link_to 'Deletar', administrador_turma_path(turma), :method => :delete,
+            :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>

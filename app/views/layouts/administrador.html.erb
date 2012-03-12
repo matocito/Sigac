@@ -3,8 +3,9 @@
 <head>
   <title>Sigac</title>
   <%= stylesheet_link_tag 'bootstrap.min', 'application', 'bootstrap-responsive.min' %>
-  <%= javascript_include_tag 'jquery', 'jquery_ujs', 'application' %>
-  <%= javascript_include_tag 'bootstrap/bootstrap.min' %>
+  <%= javascript_include_tag 'jquery', 'jquery-ui.min', 'jquery_ujs', 'application' %>
+  <%= javascript_include_tag 'bootstrap/bootstrap.min', 'bootstrap/bootstrap-typehead',
+     'autocomplete-rails.js' %>
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -25,12 +26,18 @@
                 Cadastrar <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><%= link_to 'Aluno', new_administrador_aluno_path  %></li>
+                <li><%= link_to 'Professor', new_administrador_professor_path  %></li>
+                <li><%= link_to 'Turma', new_administrador_turma_path  %></li>
                 <li class="divider"></li>
                 <li><%= link_to 'Série', new_administrador_series_path  %></li>
                 <li><%= link_to 'Matéria', new_administrador_materia_path  %></li>
               </ul> 
             </li>
-            <li><a href="#contact">Contact</a></li>
+            <li><%= link_to 'Alunos', administrador_alunos_path  %></li>
+            <li><%= link_to 'Matérias', administrador_materias_path  %></li>
+            <li><%= link_to 'Professores', administrador_professores_path  %></li>
+            <li><%= link_to 'Séries', administrador_series_index_path  %></li>
+            <li><%= link_to 'Turmas', administrador_turmas_path  %></li>
           </ul>
           <p class="navbar-text pull-right">
             <%= link_to 'Sair', destroy_administrador_session_path, 

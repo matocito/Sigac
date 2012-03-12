@@ -11,4 +11,18 @@ class DisciplinaProfessor < ActiveRecord::Base
   
   has_many :materiais_estudo, :class_name => 'MaterialEstudo'
   has_many :avaliacoes
+  
+  validates :professor_id, :presence => true
+  
+  accepts_nested_attributes_for :disciplina
+  accepts_nested_attributes_for :professor
+  
+  default_value_for :aulas_lecionadas, 0
+  default_value_for :bimestre do
+    1
+  end
+  
+  def to_s
+    "#{disciplina} / #{professor}"
+  end
 end

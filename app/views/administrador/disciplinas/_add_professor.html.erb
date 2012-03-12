@@ -1,0 +1,7 @@
+<%= simple_form_for [:administrador, @disciplina, @disciplina_professor] do |f| %>
+  <%= f.input :disciplina, :disabled => true %>
+  <%= f.association :professor, 
+  :collection => Professor.disponiveis_para_disciplina(@disciplina),  
+  :prompt => 'Selecione um Professor' %>
+<% end -%>
+

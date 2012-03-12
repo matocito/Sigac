@@ -1,0 +1,2 @@
+module Administrador::ProfessoresHelper
+end

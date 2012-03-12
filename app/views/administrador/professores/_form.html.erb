@@ -1,0 +1,25 @@
+<%= simple_form_for [:administrador, @professor], 
+  :html => { :class => 'form-horizontal' } do |f|  %>
+  <fieldset>
+    <legend>Dados Pessoais</legend>
+    <%= f.input :nome %>
+    <%= f.input :cpf, :label => 'CPF' %>
+    <%= f.input :nascimento, :as => :string %>
+    <%= f.input :telefone %>
+  </fieldset>
+  
+  <fieldset>
+    <legend>Dados de Usuário
+      <%= link_to ' - Alterar Senha', '#' unless @professor.new_record? %></legend>
+
+      <%= f.input :email, :label => 'E-mail' %>
+      <%= f.input :password, :label => 'Senha' if @professor.new_record? %>
+      <%= f.input :password_confirmation, 
+        :label => 'Confirmar Senha' if @professor.new_record? %>
+  </fieldset>
+  
+  <div class="form-actions">
+    <%= f.button :submit,  :class => 'btn-primary' %>
+    <%= link_to 'Cancelar', administrador_professores_path  %>
+  </div>
+<% end %>

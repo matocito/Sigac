@@ -1,0 +1,42 @@
+<div class="page-header">
+  <h2>Professores - <%= link_to 'Adicionar Professor', 
+    new_administrador_professor_path, :class => 'btn' %></h2>
+</div>
+
+<table class="table table-striped table-bordered" id="sortTable">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nome</th>
+      <th>Disciplina - Turma</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @professores.each do |professor| -%>
+      <tr>
+        <td><%= professor.id %></td>
+        <td><strong><%= link_to professor.nome, [:administrador, professor] %></strong></td>
+        <td>
+          <ul class="unstyled">
+          <% professor.disciplinas.each do |disciplina| %>
+            <li>
+              <%= disciplina.materia.nome %> - 
+              <%= disciplina.turma.serie.titulo %> 
+              <%= disciplina.turma.nome %> 
+              <%= disciplina.turma.sala %>
+            </li>
+          <% end -%>
+          </ul>
+        </td>
+        <td>
+          <%= link_to 'Editar', edit_administrador_professor_path(professor),
+            :class => 'btn btn-mini' %>
+          <%= link_to 'Deletar', administrador_professor_path(professor), 
+            :method => :delete,
+            :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>

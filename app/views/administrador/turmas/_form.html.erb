@@ -1,0 +1,11 @@
+<%= simple_form_for [:administrador, @turma], 
+  :html => { :class => 'form-horizontal' } do |f|  %>
+  <%= f.association :serie %>
+  <%= f.input :sala, :collection => 'A'..'Z', :default => 'A' %>
+  <%= f.input :nome %>
+  
+  <div class="form-actions">
+    <%= f.button :submit,  :class => 'btn-primary' %>
+    <%= link_to 'Cancelar', administrador_turmas_path  %>
+  </div>
+<% end %>
