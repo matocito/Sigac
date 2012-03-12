@@ -28,6 +28,10 @@ class Turma < ActiveRecord::Base
     DisciplinaProfessor.where(:disciplina_id => disciplina_ids)
   end
   
+  def to_s
+    "#{nome} - #{serie} #{sala}"
+  end
+  
   #protected
   def criar_horarios
     Hora.find_each do |hora|

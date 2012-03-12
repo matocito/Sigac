@@ -11,6 +11,7 @@ class DisciplinaProfessor < ActiveRecord::Base
   
   has_many :materiais_estudo, :class_name => 'MaterialEstudo'
   has_many :avaliacoes
+  has_many :horarios
   
   validates :professor_id, :presence => true
   

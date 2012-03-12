@@ -3,6 +3,10 @@ Sigac::Application.routes.draw do
   devise_for :alunos
   devise_for :professores
 
+  namespace :professor do
+    resources :horario, :only => :index
+  end
+
   namespace :administrador do
     resources :materias
     resources :alunos
