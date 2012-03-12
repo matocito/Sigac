@@ -9,6 +9,7 @@ Sigac::Application.routes.draw do
     resources :series
     resources :turmas
     resources :professores
+    resources :horarios
     resources :disciplinas do
       resources :disciplina_professores
       get 'add_professor', :on => :member

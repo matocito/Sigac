@@ -3,4 +3,8 @@ class Hora < ActiveRecord::Base
   validates :intervalo, :presence => true
   
   belongs_to :horario
+  
+  def to_s
+    intervalo
+  end
 end
