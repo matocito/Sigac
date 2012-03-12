@@ -7,6 +7,8 @@ class Aluno < ActiveRecord::Base
   validates :identidade, :presence => true
   validates :nascimento, :presence => true
   validates :telefone, :presence => true
+
+  default_scope :order => 'nome ASC'
   
   belongs_to :turma
   has_many   :boletins

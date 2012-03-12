@@ -46,6 +46,12 @@
   <h4>Alunos</h4>
 </div>
 
+<%= simple_form_for :aluno, :url => add_aluno_administrador_turma_path(@turma) do |f| %>
+  <%= f.hidden_field :id %>
+  <%= f.input :nome, :input_html => { 'data-source' => administrador_alunos_path } %>
+  <%= f.button :submit, 'Adicionar Aluno' %>
+<% end %>
+
 <table class="table table-striped table-bordered" id="sortTable">
   <thead>
     <tr>
@@ -62,7 +68,8 @@
         <td><%= aluno.nome %></td>
         <td><%= aluno.responsavel %></td>
         <td>
-          <%= link_to 'Remover da Turma', administrador_turma_path(turma), 
+          <%= link_to 'Remover da Turma', 
+            remover_aluno_administrador_turma_path(@turma, :aluno => aluno), 
             :method => :delete, :class => 'btn btn-mini btn-danger' %>
         </td>
       </tr>
@@ -87,6 +94,19 @@
 <%= content_for :javascripts do %>
   <script type="text/javascript">
     $(function(){
+    
+      $('#aluno_nome').autocomplete({
+        source: $('#aluno_nome').data('source'),
+        select: function(event, ui) {
+          $('#aluno_id').val(ui.item.id);
+        }
+      }).data('autocomplete')._renderItem = function(ul, item) {
+        return $('<li></li>')
+          .data( "item.autocomplete", item )
+				  .append( "<a>" + item.nome + "</a>" )
+				  .appendTo( ul );
+      };
+    
       $('.modal-close-btn').click(function(){
         $(this).parent().parent().modal('hide');
       });

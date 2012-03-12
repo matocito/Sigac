@@ -9,6 +9,8 @@ Sigac::Application.routes.draw do
     resources :series
     resources :turmas do
       get 'horario', :on => :member
+      post 'add_aluno', :on => :member
+      delete 'remover_aluno', :on => :member
     end
     resources :professores
     resources :horarios
