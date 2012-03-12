@@ -24,6 +24,10 @@ class Turma < ActiveRecord::Base
     horarios.group_by { |h| h.hora.intervalo }
   end
   
+  def professores
+    DisciplinaProfessor.where(:disciplina_id => disciplina_ids)
+  end
+  
   #protected
   def criar_horarios
     Hora.find_each do |hora|

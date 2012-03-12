@@ -12,3 +12,5 @@ body { margin-top: 60px; }
 .page-header { margin-top: 0px; }
 
 .modal {display: none }
+
+.dp_select { width: 155px; }

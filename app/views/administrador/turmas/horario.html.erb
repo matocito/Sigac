@@ -18,10 +18,9 @@
       <% horarios.each do |horario| -%>
         <td>
           <%= simple_form_for [:administrador, horario], :remote => true do |f| %>
-            <%= f.association :disciplina_professor, :label => false, 
+            <%= f.association :disciplina_professor, :collection => @turma.professores, :label => false, 
               :input_html => { :class => 'dp_select' } %>
           <% end %>
-          
         </td>
       <% end -%>
     </tr>
