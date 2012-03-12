@@ -21,7 +21,7 @@
         <td><%= link_to turma.nome, [:administrador, turma] %></td>
         <td><%= turma.serie %></td>
         <td><%= turma.sala %></td>
-        <td><%= link_to 'Definir Horário' %></td>
+        <td><%= link_to 'Definir Horário', horario_administrador_turma_path(turma) %></td>
         <td>
           <%= link_to 'Editar', edit_administrador_turma_path(turma),
             :class => 'btn btn-mini' %>

@@ -3,6 +3,6 @@ class Administrador::HorariosController < Administrador::AdminController
   
   def update
     #@horario = Horario.new(params[:horario])
-    update!{ edit_administrador_turma_path @horario.turma }
+    update!{ horario_administrador_turma_path @horario.turma }
   end
 end

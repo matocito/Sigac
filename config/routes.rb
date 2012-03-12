@@ -7,7 +7,9 @@ Sigac::Application.routes.draw do
     resources :materias
     resources :alunos
     resources :series
-    resources :turmas
+    resources :turmas do
+      get 'horario', :on => :member
+    end
     resources :professores
     resources :horarios
     resources :disciplinas do

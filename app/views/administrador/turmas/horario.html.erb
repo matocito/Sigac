@@ -1,0 +1,40 @@
+<div class="page-header">
+  <h2>Definir Horário</h2>
+</div>
+
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <th>#</th>
+    <% @turma.dias_aulas.each do |dia_aula| -%>
+      <th><%= dia_aula %></th>
+    <% end -%>
+  </thead>
+  
+  <tbody>
+  <% @turma.horas_aulas.each do |intervalo, horarios| -%>
+    <tr>
+      <td><%= intervalo %></td>
+      <% horarios.each do |horario| -%>
+        <td>
+          <%= simple_form_for [:administrador, horario], :remote => true do |f| %>
+            <%= f.association :disciplina_professor, :label => false, 
+              :input_html => { :class => 'dp_select' } %>
+          <% end %>
+          
+        </td>
+      <% end -%>
+    </tr>
+  <% end -%>
+  </tbody>
+</table>
+
+<%= content_for :javascripts do %>
+  <script type="text/javascript">
+    $(function(){
+      $('select.dp_select').change(function(){
+        $(this).parent().parent().parent().submit();
+      });
+    });
+  </script>
+<% end %>
