@@ -9,8 +9,8 @@ class Disciplina < ActiveRecord::Base
   has_many   :professores, :through => :disciplina_professores
   has_many   :avaliacoes, :through => :disciplina_professores
   
-  def adicionar_professor(professor)
-    disciplina_professores.create(:professor => professor)
+  def adicionar_professor(professor, bimestre)
+    disciplina_professores.create!(:professor => professor, :bimestre => bimestre)
   end
   
   def gerar_boletim(aluno)

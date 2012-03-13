@@ -9,6 +9,8 @@ Sigac::Application.routes.draw do
       resources :avaliacoes
       resources :materiais_estudo
     end
+    
+    root :to => 'horario#index'
   end
 
   namespace :administrador do

@@ -19,7 +19,7 @@
         <a class="brand" href="#">Project name</a>
         <div class="nav-collapse">
           <ul class="nav">
-            <li class="active"><a href="<%= administrador_root_url %>">Principal</a></li>
+            <li class="active"><a href="<%= professor_root_url %>">Principal</a></li>
             <li><%= link_to 'Horário Individual', professor_horario_index_path  %></li>
           </ul>
           <p class="navbar-text pull-right">
@@ -58,9 +58,16 @@
               <div class="accordion-body" style="height: auto;" id="<%= "turma_#{turma.id}" %>">
                 <div class="accordion-inner">
                   <ul class="unstyled">
-                    <% dps.each do |dp| -%>
-                      <li><%= link_to dp.disciplina.materia.nome, 
-                        professor_disciplina_professor_path(dp) %></li>
+                    <% dps.group_by(&:disciplina).each do |disciplina, d_professores| -%>
+                      <li>
+                        <%= link_to disciplina.materia.nome %>
+                        <ul>
+                          <% d_professores.each do |dp| -%>
+                            <li><%= link_to "Bimestre #{dp.bimestre}", 
+                              professor_disciplina_professor_path(dp) %></li>
+                          <% end -%>
+                        </ul>  
+                      </li>
                     <% end -%>
                   </ul>
                 </div>  

@@ -3,7 +3,12 @@ class Administrador::DisciplinaProfessoresController < Administrador::AdminContr
   
   def create
     @disciplina = Disciplina.find(params[:disciplina_id])
-    @disciplina.disciplina_professores.create!(params[:disciplina_professor])
+    @professor = Professor.find(params[:disciplina_professor][:professor_id])
+    
+    bimestres = params[:disciplina_professor][:bimestre].reject(&:empty?).map(&:to_i)
+    bimestres.each do |bimestre|
+      @disciplina.adicionar_professor(@professor, bimestre)
+    end
     
     redirect_to [:administrador, @disciplina.turma]
   end

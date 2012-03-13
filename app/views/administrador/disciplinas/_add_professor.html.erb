@@ -3,5 +3,7 @@
   <%= f.association :professor, 
   :collection => Professor.disponiveis_para_disciplina(@disciplina),  
   :prompt => 'Selecione um Professor' %>
+  
+  <%= f.input :bimestre, :as => :check_boxes, :collection => 1..4 %>
 <% end -%>
 
