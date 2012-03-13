@@ -5,6 +5,9 @@ Sigac::Application.routes.draw do
 
   namespace :professor do
     resources :horario, :only => :index
+    resources :disciplina_professores do
+      resources :avaliacoes
+    end
   end
 
   namespace :administrador do

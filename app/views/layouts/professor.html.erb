@@ -42,6 +42,32 @@
           </li>
         </ul>
         <h3><%= current_professor.nome %></h3>
+        
+        <div class="page-header">
+          <br /><h4>Turmas</h4>
+        </div>
+        
+        <div class="accordion" id="accordion">
+          <% current_professor.turmas.each do |turma,dps| -%>
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <%= link_to turma, "#turma_#{turma.id}", 'data-toggle' => 'collapse', 
+                  'data-parent' => '#accordion', 'data-target' => "#turma_#{turma.id}",
+                  :class => 'accordion-toggle' %>
+              </div>
+              <div class="accordion-body" style="height: auto;" id="<%= "turma_#{turma.id}" %>">
+                <div class="accordion-inner">
+                  <ul class="unstyled">
+                    <% dps.each do |dp| -%>
+                      <li><%= link_to dp.disciplina.materia.nome, 
+                        professor_disciplina_professor_path(dp) %></li>
+                    <% end -%>
+                  </ul>
+                </div>  
+              </div>
+            </div>  
+          <% end -%>
+        </div>
       </div>
       
     </div><!--/span-->

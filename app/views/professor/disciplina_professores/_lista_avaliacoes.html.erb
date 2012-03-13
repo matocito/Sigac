@@ -1,0 +1,22 @@
+<% if @disciplina_professor.avaliacoes.empty? -%>
+  <div class="alert alert-info">
+    <strong>Não há avaliações cadastradas para esta disciplina.</strong>
+  </div>
+<% else -%>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Data</th>
+        <th>Título</th>
+      </tr>
+    </thead>
+    <tbody >
+      <% @disciplina_professor.avaliacoes.each do |avaliacao| %>
+        <tr>
+          <td><%=l avaliacao.created_at %></td>
+          <td><%= avaliacao.titulo %></td>
+        </tr>
+      <% end %> 
+    </tbody>
+  </table>
+<% end %>

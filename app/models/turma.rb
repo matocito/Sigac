@@ -6,6 +6,7 @@ class Turma < ActiveRecord::Base
   belongs_to  :serie
   belongs_to  :ano
   has_many    :disciplinas
+  has_many    :disciplina_professores, :through => :disciplinas
   has_many    :alunos
   has_many    :horarios
   

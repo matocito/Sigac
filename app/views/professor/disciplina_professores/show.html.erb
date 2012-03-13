@@ -1,0 +1,40 @@
+<div class="page-header">
+  <h1><%= @disciplina_professor.disciplina.turma %> - 
+  <%= @disciplina_professor.disciplina.materia.nome %></h1>
+</div>
+
+<div class="row-fluid">
+  <div class="span6">
+    <div class="page-header">
+      <h5>Atividades Avaliativas</h5>
+    </div>
+    
+    <div id="lista-avaliacoes">
+      <%= render 'lista_avaliacoes' %>    
+    </div>
+
+    <div class="page-header">
+      <h5>Cadastrar Atividade</h5>
+    </div>
+    
+    <%= simple_form_for [:professor, @disciplina_professor, 
+      @disciplina_professor.avaliacoes.build], :html => { :class => 'form-horizontal' }, 
+      :remote => true do |f| %>
+      
+      <%= f.input :titulo, :label => 'Título' %>
+      <%= f.input :peso %>
+      <%= f.input :recuperacao, :label => 'Recuperação?' %>
+      
+      <div class="form-actions">
+        <%= f.button :submit, :class => 'btn-primary' %>
+      </div>
+    <% end -%>
+    
+  </div>
+  
+  <div class="span6">
+    <div class="page-header">
+      <h5>Materiais Enviados</h5>
+    </div>
+  </div>
+</div>

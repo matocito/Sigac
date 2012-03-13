@@ -18,6 +18,10 @@ class Professor < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :nome, :cpf, :nascimento, :telefone, :foto
   
+  def turmas
+    disciplina_professores.group_by { |dp| dp.disciplina.turma } 
+  end
+  
   def dias_aula
     Hora.all.group_by(&:dia)
   end

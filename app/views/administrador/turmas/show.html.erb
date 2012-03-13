@@ -106,14 +106,6 @@
 				  .append( "<a>" + item.nome + "</a>" )
 				  .appendTo( ul );
       };
-    
-      $('.modal-close-btn').click(function(){
-        $(this).parent().parent().modal('hide');
-      });
-      
-      $('.modal-save-btn').click(function(){
-        $(this).parent().parent().find('form').submit();
-      });
     });
   </script>
 <% end %>
