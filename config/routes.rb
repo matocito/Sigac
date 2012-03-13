@@ -7,6 +7,7 @@ Sigac::Application.routes.draw do
     resources :horario, :only => :index
     resources :disciplina_professores do
       resources :avaliacoes
+      resources :materiais_estudo
     end
   end
 

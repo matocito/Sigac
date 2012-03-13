@@ -12,6 +12,7 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'professor', 'professores'
   inflect.irregular 'avaliacao', 'avaliacoes'
   inflect.irregular 'material', 'materiais'
+  inflect.singular 'materiais', 'material'
 #   inflect.plural /^(ox)$/i, '\1en'
 #   inflect.singular /^(ox)en/i, '\1'
 #   inflect.irregular 'person', 'people'

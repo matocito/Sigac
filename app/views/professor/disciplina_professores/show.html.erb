@@ -36,5 +36,26 @@
     <div class="page-header">
       <h5>Materiais Enviados</h5>
     </div>
+    
+    <div id="lista-materiais">
+      <%= render 'lista_materiais' %>    
+    </div>
+
+    <div class="page-header">
+      <h5>Cadastrar Material</h5>
+    </div>
+    
+    <%= simple_form_for [:professor, @disciplina_professor, 
+      @disciplina_professor.materiais_estudo.build], 
+      :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
+      
+      <%= f.input :titulo, :label => 'Título' %>
+      <%= f.input :arquivo %>
+      
+      <div class="form-actions">
+        <%= f.button :submit, :class => 'btn-primary' %>
+      </div>
+    <% end -%>    
+    
   </div>
 </div>
