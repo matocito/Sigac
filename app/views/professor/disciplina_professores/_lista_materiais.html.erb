@@ -1,0 +1,22 @@
+<% if @disciplina_professor.materiais_estudo.empty? -%>
+  <div class="alert alert-info">
+    <strong>Não há materiais cadastrados para esta disciplina.</strong>
+  </div>
+<% else -%>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Tipo</th>
+        <th>Título</th>
+      </tr>
+    </thead>
+    <tbody >
+      <% @disciplina_professor.materiais_estudo.each do |material| %>
+        <tr>
+          <td><%= material.arquivo_content_type %></td>
+          <td><%= link_to material.titulo, material.arquivo.url %></td>
+        </tr>
+      <% end %> 
+    </tbody>
+  </table>
+<% end %>

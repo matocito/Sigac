@@ -1,0 +1,2 @@
+module Professor::DisciplinasHelper
+end

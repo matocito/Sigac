@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sigac</title>
+  <%= stylesheet_link_tag 'bootstrap.min', 'application', 'bootstrap-responsive.min' %>
+  <%= javascript_include_tag 'jquery', 'jquery-ui.min', 'jquery_ujs', 'application' %>
+  <%= javascript_include_tag 'bootstrap/bootstrap.min'%>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container-fluid">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="#">Project name</a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="active"><a href="<%= professor_root_url %>">Principal</a></li>
+            <li><%= link_to 'Horário Individual', professor_horario_index_path  %></li>
+          </ul>
+          <p class="navbar-text pull-right">
+            <%= link_to 'Sair', destroy_administrador_session_path, 
+              :method => :delete  %></p>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span2">
+      <div class="foto">
+        <ul class="thumbnails">
+          <li>
+            <a href="#">
+              <%= image_tag 'foto_perfil2.jpg', :class => 'thumbnail' %>
+            </a>
+          </li>
+        </ul>
+        <h3><%= current_professor.nome %></h3>
+        
+        <div class="page-header">
+          <br /><h4>Turmas</h4>
+        </div>
+        
+        <div class="accordion" id="accordion">
+          <% current_professor.turmas.each do |turma,dps| -%>
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <%= link_to turma, "#turma_#{turma.id}", 'data-toggle' => 'collapse', 
+                  'data-parent' => '#accordion', 'data-target' => "#turma_#{turma.id}",
+                  :class => 'accordion-toggle' %>
+              </div>
+              <div class="accordion-body" style="height: auto;" id="<%= "turma_#{turma.id}" %>">
+                <div class="accordion-inner">
+                  <ul class="unstyled">
+                    <% dps.group_by(&:disciplina).each do |disciplina, d_professores| -%>
+                      <li>
+                        <%= link_to disciplina.materia.nome, [:professor, turma, disciplina] %>
+                        <ul>
+                          <% d_professores.each do |dp| -%>
+                            <li><%= link_to "Bimestre #{dp.bimestre}", 
+                              professor_disciplina_professor_path(dp) %></li>
+                          <% end -%>
+                        </ul>  
+                      </li>
+                    <% end -%>
+                  </ul>
+                </div>  
+              </div>
+            </div>  
+          <% end -%>
+        </div>
+      </div>
+      
+    </div><!--/span-->
+    <div class="span9 content-box">
+      <%= yield %>
+    </div>
+  </div>
+</div>
+
+
+<%= yield :javascripts %>
+
+</body>
+</html>

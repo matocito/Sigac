@@ -12,10 +12,35 @@ class Professor < ActiveRecord::Base
   has_many :materiais_estudo, :through => :disciplina_professores
   has_many :avaliacoes, :through => :disciplina_professores
   has_many :disciplinas, :through => :disciplina_professores
+  has_many :horarios, :through => :disciplina_professores
   has_one  :usuario, :as => :autenticavel
   
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :nome, :cpf, :nascimento, :telefone, :foto
+  
+  def turmas
+    disciplina_professores.group_by { |dp| dp.disciplina.turma } 
+  end
+  
+  def dias_aula
+    Hora.all.group_by(&:dia)
+  end
+  
+  def aulas_horario(dia, intervalo)
+    Horario.includes(:hora).where(:disciplina_professor_id => disciplina_professor_ids, 
+    'horas.intervalo' => intervalo, 'horas.dia' => dia)
+  end
+  
+  def teste_horario
+    Horario.where(:disciplina_professor_id => disciplina_professor_ids).
+      group_by { |h| h.hora.dia }
+  end
+  
+  def horario_agrupado
+    Horario.includes(:hora).order('horas.intervalo').
+      where(:disciplina_professor_id => disciplina_professor_ids).
+      group_by { |h| h.hora.intervalo }
+  end
   
   def to_s
     nome

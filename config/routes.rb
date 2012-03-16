@@ -3,6 +3,24 @@ Sigac::Application.routes.draw do
   devise_for :alunos
   devise_for :professores
 
+  namespace :professor do
+    resources :horario, :only => :index
+    resources :disciplina_professores do
+      resources :avaliacoes
+      resources :materiais_estudo
+      resources :faltas
+      put 'aulas_lecionadas', :on => :member
+    end
+    
+    resources :resultados
+    
+    resources :turma do
+      resources :disciplinas
+    end
+    
+    root :to => 'horario#index'
+  end
+
   namespace :administrador do
     resources :materias
     resources :alunos

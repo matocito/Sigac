@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120308020354) do
+ActiveRecord::Schema.define(:version => 20120313204149) do
 
   create_table "administradores", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -106,6 +106,14 @@ ActiveRecord::Schema.define(:version => 20120308020354) do
     t.datetime "updated_at"
   end
 
+  create_table "faltas", :force => true do |t|
+    t.integer  "total"
+    t.integer  "aluno_id"
+    t.integer  "disciplina_professor_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "horarios", :force => true do |t|
     t.integer  "turma_id"
     t.integer  "disciplina_professor_id"
@@ -127,6 +135,8 @@ ActiveRecord::Schema.define(:version => 20120308020354) do
     t.integer  "disciplina_professor_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "arquivo_file_name"
+    t.string   "arquivo_content_type"
   end
 
   create_table "materias", :force => true do |t|

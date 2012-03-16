@@ -4,6 +4,7 @@
 # (all these examples are active by default):
 ActiveSupport::Inflector.inflections do |inflect|
   inflect.plural 'materia', 'materias'
+  inflect.plural 'falta', 'faltas'
   inflect.plural 'material', 'materiais'
   inflect.plural 'ano_letivo', 'anos_letivos'
   inflect.plural 'boletim', 'boletins'
@@ -12,6 +13,8 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'professor', 'professores'
   inflect.irregular 'avaliacao', 'avaliacoes'
   inflect.irregular 'material', 'materiais'
+  inflect.singular 'materiais', 'material'
+  inflect.singular 'faltas', 'falta'
 #   inflect.plural /^(ox)$/i, '\1en'
 #   inflect.singular /^(ox)en/i, '\1'
 #   inflect.irregular 'person', 'people'

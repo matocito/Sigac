@@ -1,0 +1,26 @@
+<div class="page-header">
+  <h2>Horário</h2>
+</div>
+
+<% @professor.teste_horario.each do |dia, horarios| -%>
+  <div class="dia-horario">
+    <h3><%= dia %></h3>
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th><%= dia %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% horarios.each do |horario| %>
+          <tr>
+            <td><%= horario.hora.intervalo %></td>
+            <td><%= horario.turma %> - <%= horario.disciplina_professor.disciplina %></td>
+          </tr>
+        <% end -%>
+      </tbody>  
+    </table>
+  </div>
+<% end -%>
+

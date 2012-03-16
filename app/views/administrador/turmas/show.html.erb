@@ -23,12 +23,20 @@
         <td><%= disciplina.materia.nome %></td>
         <td>
           <ul class="unstyled">
-            <% disciplina.disciplina_professores.each do |dp| %>
-              <li><%= dp.professor.nome %> - 
-                <%= link_to 'Remover',  
-                  administrador_disciplina_disciplina_professor_path(disciplina,dp),
-                  :method => :delete, :class => 'btn btn-danger btn-mini'
-                %>
+            <% disciplina.disciplina_professores.group_by(&:professor).each do |professor, dps| %>
+              <li>
+                <%= professor.nome %> 
+                <ul >
+                  <% dps.each do |dp| -%>
+                    <li><strong>Bimestre <%= dp.bimestre %>: </strong>
+                      <%= link_to 'Remover',  
+                        administrador_disciplina_disciplina_professor_path(disciplina,dp),
+                        :method => :delete, :class => 'btn btn-danger btn-mini'
+                      %>
+                    </li> 
+                  <% end -%>
+                </ul>
+
               </li>
             <% end -%>
           </ul>
@@ -106,14 +114,6 @@
 				  .append( "<a>" + item.nome + "</a>" )
 				  .appendTo( ul );
       };
-    
-      $('.modal-close-btn').click(function(){
-        $(this).parent().parent().modal('hide');
-      });
-      
-      $('.modal-save-btn').click(function(){
-        $(this).parent().parent().find('form').submit();
-      });
     });
   </script>
 <% end %>
