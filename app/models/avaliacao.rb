@@ -5,4 +5,13 @@ class Avaliacao < ActiveRecord::Base
 
   belongs_to :disciplina_professor
   has_many   :resultados
+  
+  after_create :criar_resultados
+  
+  #protected
+  def criar_resultados
+    disciplina_professor.disciplina.turma.alunos.each do |aluno|
+      resultados.create!(:aluno => aluno, :nota => 0)
+    end
+  end
 end

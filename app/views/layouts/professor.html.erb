@@ -60,7 +60,7 @@
                   <ul class="unstyled">
                     <% dps.group_by(&:disciplina).each do |disciplina, d_professores| -%>
                       <li>
-                        <%= link_to disciplina.materia.nome %>
+                        <%= link_to disciplina.materia.nome, [:professor, turma, disciplina] %>
                         <ul>
                           <% d_professores.each do |dp| -%>
                             <li><%= link_to "Bimestre #{dp.bimestre}", 

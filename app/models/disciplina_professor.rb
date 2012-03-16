@@ -12,11 +12,14 @@ class DisciplinaProfessor < ActiveRecord::Base
   has_many :materiais_estudo, :class_name => 'MaterialEstudo'
   has_many :avaliacoes
   has_many :horarios
+  has_many :faltas
   
   validates :professor_id, :presence => true
   
   accepts_nested_attributes_for :disciplina
   accepts_nested_attributes_for :professor
+  
+  after_create :criar_faltas
   
   default_value_for :aulas_lecionadas, 0
   default_value_for :bimestre do
@@ -25,5 +28,11 @@ class DisciplinaProfessor < ActiveRecord::Base
   
   def to_s
     "#{disciplina} / #{professor}"
+  end
+  
+  def criar_faltas
+    disciplina.turma.alunos.each do |aluno|
+      faltas.create!(:aluno => aluno)
+    end
   end
 end

@@ -8,6 +8,13 @@ Sigac::Application.routes.draw do
     resources :disciplina_professores do
       resources :avaliacoes
       resources :materiais_estudo
+      resources :faltas
+    end
+    
+    resources :resultados
+    
+    resources :turma do
+      resources :disciplinas
     end
     
     root :to => 'horario#index'
