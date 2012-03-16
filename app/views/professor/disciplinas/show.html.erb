@@ -25,6 +25,7 @@
             <tr>
               <th>Aluno</th>
               <th>Total de Faltas</th>
+              <th>Frequência</th>
               <% dp.avaliacoes.each do |avaliacao| -%>
                 <th><%= avaliacao.titulo %></th>
               <% end -%>
@@ -41,6 +42,7 @@
                       :input_html => { :class => 'span1 resultado_nota' } %>
                   <% end %>
                 </td>
+                <td><%= number_to_percentage(dp.frequencia(aluno), :precision => 0) %></td>
                 <% dp.avaliacoes.each do |avaliacao| -%>
                   <td>
                     <%= simple_form_for [:professor, aluno.resultados.where(:avaliacao_id => avaliacao).first], :remote => true do |f| %>
@@ -53,6 +55,13 @@
             <% end -%>            
           </tbody>
         </table>
+       
+       <%= simple_form_for dp, :url => aulas_lecionadas_professor_disciplina_professor_path(dp), 
+         :remote => true do |f| %>
+         <%= f.input :aulas_do_dia, :label => 'Aulas lecionadas hoje', 
+          :input_html => { :class => 'span1' } %>
+         <%= f.button :submit, :value => 'Salvar', :class => 'btn-primary' %>
+       <% end %>
        
       </div>      
     <% end -%>

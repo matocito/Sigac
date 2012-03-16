@@ -9,6 +9,7 @@ Sigac::Application.routes.draw do
       resources :avaliacoes
       resources :materiais_estudo
       resources :faltas
+      put 'aulas_lecionadas', :on => :member
     end
     
     resources :resultados

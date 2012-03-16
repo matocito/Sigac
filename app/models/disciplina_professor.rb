@@ -14,6 +14,8 @@ class DisciplinaProfessor < ActiveRecord::Base
   has_many :horarios
   has_many :faltas
   
+  attr_accessor :aulas_do_dia
+  
   validates :professor_id, :presence => true
   
   accepts_nested_attributes_for :disciplina
@@ -24,6 +26,19 @@ class DisciplinaProfessor < ActiveRecord::Base
   default_value_for :aulas_lecionadas, 0
   default_value_for :bimestre do
     1
+  end
+  
+  def frequencia(aluno)
+    total_faltas = faltas.where(:aluno_id => aluno).first.total
+    if total_faltas == 0
+      100
+    else
+      if aulas_lecionadas == 0
+        0
+      else
+        100 - (total_faltas.to_f/aulas_lecionadas) * 100
+      end
+    end
   end
   
   def to_s
