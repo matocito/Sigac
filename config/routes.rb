@@ -40,5 +40,10 @@ Sigac::Application.routes.draw do
     root :to => 'alunos#index'
   end
   
+  namespace :aluno do
+    match '/horario' => 'horario#index', :via => :get
+    root :to => 'horario#index'
+  end
+  
   root :to => 'administrador/alunos#index'
 end

@@ -39,4 +39,13 @@ class Aluno < ActiveRecord::Base
     faltas.where(:disciplina_professor_id => dp).first || faltas.build
     #Falta.find_by_aluno_id_and_disciplina_professor_id(self,dp)
   end
+  
+  def horario
+    turma.horarios.group_by{|horario| horario.hora.dia}
+  end
+  
+  def aula_horario(dia, intervalo)
+    Horario.includes(:hora).where(:turma_id => turma.id, 
+    'horas.intervalo' => intervalo, 'horas.dia' => dia).first.disciplina_professor || '-'
+  end
 end

@@ -1,0 +1,29 @@
+<div class="page-header">
+  <h2>Horário</h2>
+</div>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+        <% current_aluno.horario.keys.each do |dia| %>
+          <th><%= dia %></th>
+        <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% Hora.all.group_by(&:intervalo).each do |intervalo, horas| %>
+      <tr>
+          <td><%= intervalo %></td>
+          <% horas.each do |hora| %>
+            <td>
+              <%= current_aluno.aula_horario(hora.dia, intervalo) %>
+            </td>
+          <% end %> 
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+ 
+
+
