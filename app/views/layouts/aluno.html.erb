@@ -60,7 +60,7 @@
                   <ul class="unstyled">
                     <% disciplina.professores.uniq.each do |professor| %>
                       <li>
-                        <%= link_to professor.nome %>
+                        <%= link_to professor.nome, aluno_disciplina_professor_path(disciplina, professor) %>
                       </li>
                     <% end %>
                   </ul>

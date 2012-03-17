@@ -1,0 +1,46 @@
+<div class="page-header">
+  <h2><%= @disciplinas_professor.first%></h2>
+</div>
+
+<div class="tabbable">
+  <ul class="nav nav-pills">
+    <% @disciplinas_professor.each do |disciplina| -%>
+      <li><a href="#bimestre_<%= disciplina.bimestre %>" data-toggle="pill">
+        <%= disciplina.bimestre %>º Bimestre</a></li>
+    <% end -%>
+  </ul>
+  
+  <div class="tab-content">
+    <% @disciplinas_professor.each do |dp| -%>
+      <div class="tab-pane" id="bimestre_<%= dp.bimestre %>">
+        <div class="row-fluid">
+          <div class="span6">
+            <div class="page-header">
+              <h5>Atividades Avaliativas</h5>
+            </div>
+            
+            <div id="lista-avaliacoes">
+              <%= render 'lista_avaliacoes', :disciplina_professor => dp %> 
+            </div>
+            
+            
+          </div>
+          
+          <div class="span6">
+            <div class="page-header">
+              <h5>Materiais Enviados</h5>
+            </div>
+            
+            <div id="lista-materiais">
+              <%= render 'lista_materiais', :disciplina_professor => dp %>
+            </div>
+            
+            
+            
+          </div>
+        </div>
+        
+      </div>      
+    <% end -%>
+  </div>
+</div>
