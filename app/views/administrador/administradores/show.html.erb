@@ -1,0 +1,49 @@
+<div class="page-header">
+  <h2>Administrador - <%= link_to 'Editar Administrador', 
+    edit_administrador_administrador_path, :class => 'btn' %></h2>
+</div>
+
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#dados-pessoais" data-toggle="tab">Dados Pessoais</a></li>
+    <li><a href="#dados-usuario" data-toggle="tab">Dados de Usuário</a></li>
+    <li><a href="#dados-turma" data-toggle="tab">Turma</a></li>
+    
+  </ul>
+  
+  <div class="tab-content">
+    <div class="tab-pane active" id="dados-pessoais">
+      <table class="table table-striped">
+        <tr>
+          <td>Nome:</td>
+          <td><h4><%= @administrador.nome %></h4></td>
+        </tr>
+        <tr>
+          <td>CPF:</td>
+          <td><h4><%= @administrador.cpf %></h4></td>
+        </tr>
+        <tr>
+          <td>Nascimento:</td>
+          <td><h4><%= @administrador.nascimento %></h4></td>
+        </tr>
+        <tr>
+          <td>Telefone:</td>
+          <td><h4><%= @administrador.telefone %></h4></td>
+        </tr>
+      </table>
+    </div>
+    <div class="tab-pane" id="dados-usuario">
+      <table class="table table-striped">
+        <tr>
+          <td>E-mail:</td>
+          <td><h4><%= @administrador.email %></h4></td>
+        </tr>
+        <tr>
+          <td>Senha:</td>
+          <td><h4>******</h4></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+

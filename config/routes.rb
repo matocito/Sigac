@@ -23,6 +23,7 @@ Sigac::Application.routes.draw do
 
   namespace :administrador do
     resources :materias
+    resources :administradores
     resources :alunos
     resources :series
     resources :turmas do
