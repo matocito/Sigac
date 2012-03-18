@@ -35,6 +35,23 @@ class Disciplina < ActiveRecord::Base
     boletim.save
   end
   
+  def media_final(aluno)
+    media = 0.0
+    (1..4).each do |bimestre|
+      media += media_aluno(aluno, bimestre)
+    end
+    
+    media/4
+  end
+  
+  def situacao_aluno(aluno)
+    if media_final(aluno) < 6
+      "Reprovado"
+    else
+      "Aprovado"
+    end
+  end
+  
   def media_aluno(aluno, bimestre)
     resultados = aluno.resultados.includes(:avaliacao => :disciplina_professor).
       where('disciplina_professores.disciplina_id' => self, 

@@ -37,4 +37,6 @@ ul.ui-autocomplete  li    a {
 ul.ui-autocomplete li a.ui-state-hover, ul.ui-autocomplete li a.ui-state-active {
   background-color: #FFFCB2;
 }
-
+.table-boletim { border-top: 1px solid red; }
+.table-boletim, .table-boletim th, .table-boletim td { border: 1px solid #e2e2e2; }
+.table-boletim th, .table-boletim td { text-align: center }

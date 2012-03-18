@@ -1,0 +1,2 @@
+module Aluno::BoletimHelper
+end

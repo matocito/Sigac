@@ -44,6 +44,8 @@ Sigac::Application.routes.draw do
   namespace :aluno do
     match '/horario' => 'horario#index', :via => :get
     match '/diario' => 'diario#index', :via => :get
+    match '/boletim' => 'boletim#index', :via => :get
+
     resources :disciplina do 
       resources :professores, :only => :show
     end

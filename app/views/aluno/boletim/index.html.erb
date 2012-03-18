@@ -1,0 +1,45 @@
+<div class="page-header">
+  <h2>Boletim</h2>
+</div>
+
+<table class="table table-boletim table-striped">
+  <thead>
+    <tr>
+      <th rowspan="2"></th>
+      <th colspan="2">1º Bimestre</th>
+      <th colspan="2">2º Bimestre</th>
+      <th colspan="2">3º Bimestre</th>
+      <th colspan="2">4º Bimestre</th>
+      <th colspan="2">Final</th>
+    </tr>
+    <tr>
+      <th>Média</th>
+      <th>Freq</th>
+      <th>Média</th>
+      <th>Freq</th>
+      <th>Média</th>
+      <th>Freq</th>
+      <th>Média</th>
+      <th>Freq</th>
+      <th>Média Final</th>
+      <th>Situação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% current_aluno.turma.disciplinas.group_by(&:materia).each do |materia, _| %>
+      <tr>
+        <td><%= materia %></td>
+        <td><%= _.first.media_aluno(current_aluno, 1) %></td>
+        <td><%= number_to_percentage(current_aluno.frequencia(_.first, 1), :precision => 0) %></td>
+        <td><%= _.first.media_aluno(current_aluno, 2) %></td>
+        <td><%= number_to_percentage(current_aluno.frequencia(_.first, 2), :precision => 0) %></td>
+        <td><%= _.first.media_aluno(current_aluno, 3) %></td>
+        <td><%= number_to_percentage(current_aluno.frequencia(_.first, 3), :precision => 0) %></td>
+        <td><%= _.first.media_aluno(current_aluno, 4) %></td>
+        <td><%= number_to_percentage(current_aluno.frequencia(_.first, 4), :precision => 0) %></td>
+        <td><%= _.first.media_final(current_aluno) %></td>
+        <td><%= _.first.situacao_aluno(current_aluno) %></td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>
