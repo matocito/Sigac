@@ -42,9 +42,11 @@ Sigac::Application.routes.draw do
   
   namespace :aluno do
     match '/horario' => 'horario#index', :via => :get
+    match '/diario' => 'diario#index', :via => :get
     resources :disciplina do 
       resources :professores, :only => :show
     end
+    
     root :to => 'horario#index'
   end
   

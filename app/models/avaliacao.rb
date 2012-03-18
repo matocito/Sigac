@@ -14,4 +14,9 @@ class Avaliacao < ActiveRecord::Base
       resultados.create!(:aluno => aluno, :nota => 0)
     end
   end
+  
+  def nota_aluno(aluno)
+    resultados.includes(:aluno).where('alunos.id' => aluno).first.nota
+  end
+  
 end

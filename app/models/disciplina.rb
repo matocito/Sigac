@@ -28,8 +28,16 @@ class Disciplina < ActiveRecord::Base
     boletim
   end
   
+  def total_aulas(bimestre)
+    disciplina_professores.where(:bimestre => bimestre).sum(:aulas_lecionadas)
+  end
+  
   def to_s
     materia.nome
+  end
+  
+  def avaliacoes_bimestre(bimestre)
+    avaliacoes.includes(:disciplina_professor).where('disciplina_professores.bimestre' => bimestre)
   end
   
 end

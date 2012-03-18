@@ -48,4 +48,17 @@ class Aluno < ActiveRecord::Base
     Horario.includes(:hora).where(:turma_id => turma.id, 
     'horas.intervalo' => intervalo, 'horas.dia' => dia).first.disciplina_professor || '-'
   end
+  
+  def faltas_disciplina_total(disciplina, bimestre)
+    faltas.includes(:disciplina_professor).
+      where('disciplina_professores.disciplina_id' => disciplina, 'disciplina_professores.bimestre' => bimestre).sum(:total)
+  end
+  
+  def frequencia(disciplina, bimestre)
+    total_aulas = disciplina.total_aulas(bimestre)
+    return 0 if total_aulas == 0
+
+    total_faltas = faltas_disciplina_total(disciplina, bimestre)
+    (total_faltas.to_f / total_aulas) * 100
+  end
 end
