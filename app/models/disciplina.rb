@@ -12,20 +12,42 @@ class Disciplina < ActiveRecord::Base
   def adicionar_professor(professor, bimestre)
     disciplina_professores.create!(:professor => professor, :bimestre => bimestre)
   end
+ 
+  def gerar_boletim(bimestre)
+    turma.alunos.each do |aluno|
+      gerar_boletim_aluno(aluno, bimestre)
+    end
+  end
+ 
+  def gerar_boletim_aluno(aluno, bimestre)
+    return false if aluno.resultados.empty?
+    
+    boletim = Boletim.new.tap do |b|
+      b.aluno = aluno
+      b.media = media_aluno(aluno, bimestre)
+      b.frequencia = aluno.frequencia(self, bimestre)
+      b.disciplina = materia.nome
+      b.bimestre   = bimestre 
+      b.ano        = Time.now.strftime('%Y')
+      b.serie      = turma.serie.titulo 
+    end
+    
+    boletim.save
+  end
   
-  def gerar_boletim(aluno)
+  def media_aluno(aluno, bimestre)
+    resultados = aluno.resultados.includes(:avaliacao => :disciplina_professor).
+      where('disciplina_professores.disciplina_id' => self, 
+      'disciplina_professores.bimestre' => bimestre) 
     
-    raise "error" if aluno.resultados.empty?
+    notas = resultados.map { |r| r.avaliacao.peso * r.nota }.sum
+    peso = resultados.map { |r| r.avaliacao.peso }.sum
     
-    notas = aluno.resultados.map { |r| r.avaliacao.peso * r.nota }
-    
-    media = notas.sum / 10
-    
-    
-    boletim = Boletim.new :media => media, :frequencia => 89,
-      :disciplina => 'Biologia', :bimestre => 2, :ano => 2011,
-      :serie => '2 Ano', :aluno => aluno
-    boletim
+    if notas == 0
+      0.0
+    else
+      notas.to_f/peso
+    end
   end
   
   def total_aulas(bimestre)

@@ -13,6 +13,12 @@ class Turma < ActiveRecord::Base
   after_create :criar_disciplinas
   after_create :criar_horarios
   
+  def gerar_boletim(bimestre)
+    disciplinas.each do |disciplina|
+      disciplina.gerar_boletim(bimestre)
+    end
+  end
+  
   def dias_horas
     Hora.all.group_by(&:dia)
   end
